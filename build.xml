@@ -1,4 +1,4 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" default="run-node">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" default="run-node1">
 	<property name="src.dir" value="${basedir}/src"/>
 	<property name="src.java" value="${src.dir}/main/java"/>
 	<property name="src.resources" value="${src.dir}/main/resources"/>
@@ -30,8 +30,8 @@
 		<copydir src="${src.resources}" dest="build/classes"></copydir>
 	</target>
 
-	<target name="run-node" depends="compile" description="--> run node">
-		<java classname="Node" classpathref="classpath" fork="true"/>
+	<target name="run-node1" depends="compile" description="--> run node">
+		<java classname="Node1" classpathref="classpath" fork="true"/>
 	</target>
 
 </project>
