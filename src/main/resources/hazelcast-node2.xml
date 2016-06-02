@@ -30,7 +30,7 @@
     </group>
     <management-center enabled="false">http://localhost:8080/mancenter</management-center>
     <network>
-    	<public-address>54.152.32.105</public-address>
+    	<public-address>54.209.161.98</public-address>
         <port auto-increment="true" port-count="100">5701</port>
         <outbound-ports>
             <!--
