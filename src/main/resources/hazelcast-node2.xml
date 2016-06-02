@@ -30,7 +30,7 @@
     </group>
     <management-center enabled="false">http://localhost:8080/mancenter</management-center>
     <network>
-    	<public-address>54.209.161.98</public-address>
+    	<public-address>52.90.91.130</public-address>
         <port auto-increment="true" port-count="100">5701</port>
         <outbound-ports>
             <!--
@@ -47,7 +47,7 @@
             <tcp-ip enabled="true">
                 <interface>0.0.0.0</interface>
                 <member-list>
-                    <member>${hazelcast.member.list}</member>
+                    <member>54.152.32.105</member>
                 </member-list>
             </tcp-ip>
             <aws enabled="false">
