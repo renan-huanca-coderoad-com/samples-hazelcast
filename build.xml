@@ -1,4 +1,4 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" default="run">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" default="run-node">
 	<property name="src.dir" value="${basedir}/src"/>
 	<property name="src.java" value="${src.dir}/main/java"/>
 	<property name="src.resources" value="${src.dir}/main/resources"/>
@@ -9,9 +9,10 @@
 	<path id="classpath">
 		<fileset dir="${basedir}/lib">
 			<include name="**/*.jar" />
+		    <exclude name="**/*-sources.jar"/>
+			<exclude name="**/*-javadoc.jar"/>
 		</fileset>
 		<pathelement path="${basedir}/build/classes" />
-		<!-- convert to a variable -->
 	</path>
 
 	<target name="clean">
@@ -26,10 +27,11 @@
 	<target name="compile" depends="resolve" description="--> compile">
 		<mkdir dir="build/classes" />
 		<javac srcdir="src/main/java" destdir="build/classes" classpathref="classpath" />
+		<copydir src="${src.resources}" dest="build/classes"></copydir>
 	</target>
 
-	<target name="run" depends="compile" description="--> run">
-		<java classname="Curses" classpathref="classpath" fork="true"/>
+	<target name="run-node" depends="compile" description="--> run node">
+		<java classname="Node" classpathref="classpath" fork="true"/>
 	</target>
 
 </project>
