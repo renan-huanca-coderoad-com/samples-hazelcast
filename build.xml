@@ -1,0 +1,35 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" default="run">
+	<property name="src.dir" value="${basedir}/src"/>
+	<property name="src.java" value="${src.dir}/main/java"/>
+	<property name="src.resources" value="${src.dir}/main/resources"/>
+	
+	<property name="build.dir" value="${basedir}/build"/>
+	<property name="build.classes" value="${build.dir}/classes"/>
+	
+	<path id="classpath">
+		<fileset dir="${basedir}/lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${basedir}/build/classes" />
+		<!-- convert to a variable -->
+	</path>
+
+	<target name="clean">
+		<delete dir="build" />
+		<delete dir="lib" />
+	</target>
+
+	<target name="resolve" description="--> retrieve dependencies with ivy">
+		<ivy:retrieve />
+	</target>
+
+	<target name="compile" depends="resolve" description="--> compile">
+		<mkdir dir="build/classes" />
+		<javac srcdir="src/main/java" destdir="build/classes" classpathref="classpath" />
+	</target>
+
+	<target name="run" depends="compile" description="--> run">
+		<java classname="Curses" classpathref="classpath" fork="true"/>
+	</target>
+
+</project>
